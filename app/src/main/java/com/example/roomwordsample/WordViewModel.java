@@ -7,6 +7,10 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+/**
+ * provides methods for accessing the data layer, and it returns LiveData so that
+ * MainActivity can set up the observer relationship.
+ */
 public class WordViewModel extends AndroidViewModel {
     private WordRepository mRepository;
     private final LiveData<List<Word>> mAllWords;
@@ -17,6 +21,11 @@ public class WordViewModel extends AndroidViewModel {
         mAllWords = mRepository.getAllWords();
     }
 
+    /**
+     * Makes possible the automatic updates in the UI components. In the MainActivity,
+     * there is an Observer that observes the words LiveData from the database and is
+     * notified when they change.
+     */
     LiveData<List<Word>> getAllWords() {
         return mAllWords;
     }

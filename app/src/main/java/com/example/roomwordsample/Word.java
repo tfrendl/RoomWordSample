@@ -7,6 +7,9 @@ import androidx.room.PrimaryKey;
 /**
  * This class will describe the Entity (which represents the SQLite table) for my words.
  * Each property in the class represents a column in the table.
+ *
+ *
+ * is the entity class that contains a single word.
  */
 
 @Entity(tableName = "word_table")       // Each Entity class represents a SQLite table

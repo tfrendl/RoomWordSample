@@ -14,6 +14,10 @@ import java.util.List;
  * Room uses DAO to create a clean API for your code.
  * DAO must be an interface or abstract class.
  * By default, all queries must be executed on a separate thread.
+ *
+ *
+ * maps method calls to database queries, so that when the Repository calls a method such as
+ * getAlphabetizedWords(), Room can execute SELECT * FROM word_table ORDER BY word ASC.
  */
 @Dao
 public interface WordDao {

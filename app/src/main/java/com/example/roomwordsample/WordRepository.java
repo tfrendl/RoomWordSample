@@ -8,6 +8,9 @@ import java.util.List;
 
 /**
  * A Repository class abstracts access to multiple data sources.
+ *
+ * manages one or more data sources. The Repository exposes methods for the ViewModel to
+ * interact with the underlying data provider. In this app, that backend is a Room database.
  */
 public class WordRepository {
 
