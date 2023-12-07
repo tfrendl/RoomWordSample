@@ -12,14 +12,17 @@ import java.util.List;
  * MainActivity can set up the observer relationship.
  */
 public class WordViewModel extends AndroidViewModel {
+
     private WordRepository mRepository;
+
     private final LiveData<List<Word>> mAllWords;
 
-    public WordViewModel(Application application) {
+    public WordViewModel (Application application) {
         super(application);
         mRepository = new WordRepository(application);
         mAllWords = mRepository.getAllWords();
     }
+
 
     /**
      * Makes possible the automatic updates in the UI components. In the MainActivity,

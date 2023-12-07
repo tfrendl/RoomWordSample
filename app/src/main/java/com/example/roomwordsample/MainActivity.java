@@ -34,11 +34,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
-            startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
-        });
 
         // get a ViewModel from the ViewModelProvider
         mWordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
@@ -49,13 +44,20 @@ public class MainActivity extends AppCompatActivity {
             adapter.submitList(words);
         });
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener( view -> {
+            Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
+            startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+        });
+
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Word word = new Word(Objects.requireNonNull(data.getStringExtra(NewWordActivity.EXTRA_REPLY)));
+            Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
             mWordViewModel.insert(word);
         } else {
             Toast.makeText(
